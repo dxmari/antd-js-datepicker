@@ -38,7 +38,11 @@ Currently, this plugin only supports the Timepicker feature. However, Datepicker
 ### Steps to Use:
 1. **HTML**: Add the text input to your project.
 2. **CSS**: No need to add any styles.
-3. **JavaScript**: Just Include the script <script src="https://dxmari.github.io/antd-js-datepicker/picker.js"></script>.
+3. **JavaScript**: Just Include the script
+  
+```javascript
+ <script src="https://dxmari.github.io/antd-js-datepicker/picker.js"></script>
+```
 
 ---
 
