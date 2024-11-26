@@ -27,12 +27,12 @@ A custom TimePicker replicating Ant Design's style and functionality. It feature
 
 ## Installation
 
-This component requires no dependencies beyond the included Ant Design stylesheet for styling.
+This component requires no dependencies from Ant Design.
 
 ### Steps to Use:
-1. **HTML**: Copy and add the provided HTML structure to your project.
-2. **CSS**: Include the provided CSS styles or modify them as needed.
-3. **JavaScript**: Include the script or integrate it into your JavaScript file.
+1. **HTML**: Add the text input to your project.
+2. **CSS**: No need to add any styles.
+3. **JavaScript**: Just Include the script.
 
 ---
 
@@ -40,13 +40,70 @@ This component requires no dependencies beyond the included Ant Design styleshee
 
 ### 1. Add the TimePicker Component
 ```html
-<div class="custom-timepicker" id="customTimePicker">
-    <div class="time-display" id="timeDisplay">12:00 AM</div>
-    <div class="dropdown" id="timeDropdown">
-        <div class="scroll-container">
-            <div class="scroll-section" id="hourSection"></div>
-            <div class="scroll-section" id="minuteSection"></div>
-            <div class="scroll-section" id="meridiemSection"></div>
-        </div>
-    </div>
+<div class="container">
+    <h1>AntD-like Time Picker</h1>
+    <div class="input-block">
+      <label>Time</label>
+      <input class="picker" />
+  </div>
 </div>
+```
+
+### 2. Initiate TimePicker
+
+```javascript
+AntdJSPicker.init(<element>);
+AntdJSPicker.init('.picker');
+```
+
+### 2. Set the time in the TimePicker
+
+```javascript
+AntdJSPicker.setTime(<element>);
+AntdJSPicker.setTime('.picker');
+```
+
+## How It Works
+
+1. **Dynamic Dropdown Generation**:
+   - The dropdown dynamically populates hours, minutes, and meridiem into separate scrollable sections.
+2. **Event Handling**:
+   - Clicking on the time display toggles the dropdown visibility.
+   - Clicking outside closes the dropdown.
+   - Selecting an option updates the time display and highlights the chosen value.
+3. **Styling**:
+   - The component uses CSS for a clean, Ant Design-like appearance.
+
+---
+
+## Customization
+
+### Modify Time Options
+- Adjust the `hours`, `minutes`, or `meridiems` arrays in the JavaScript to configure the available time options.
+
+### Update Styles
+- Customize the `.antd-js-picker`, `.dropdown-antd-js-picker`, and `.scroll-section-antd-js-picker` classes to align with your project's design language.
+
+---
+
+## Browser Compatibility
+
+| Browser         | Support |
+|------------------|---------|
+| Chrome          | ✅      |
+| Firefox         | ✅      |
+| Safari          | ✅      |
+| Edge            | ✅      |
+| IE (not tested) | ❌      |
+
+---
+
+## License
+
+This project is available under the MIT License. You are free to use, modify, and distribute it as per the terms of the license.
+
+---
+
+## Contributions
+
+Contributions, issues, and feature requests are welcome! Please feel free to suggest improvements or report bugs to help make this project even better. Happy coding! 🎉
