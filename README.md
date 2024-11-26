@@ -56,7 +56,7 @@ AntdJSPicker.init(<element>);
 AntdJSPicker.init('.picker');
 ```
 
-### 2. Set the time in the TimePicker
+### 3. Set the time in the TimePicker
 
 ```javascript
 AntdJSPicker.setTime(<element>);
