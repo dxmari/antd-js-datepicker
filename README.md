@@ -31,7 +31,7 @@ This component requires no dependencies from Ant Design.
 ### Steps to Use:
 1. **HTML**: Add the text input to your project.
 2. **CSS**: No need to add any styles.
-3. **JavaScript**: Just Include the script.
+3. **JavaScript**: Just Include the script https://cdn.jsdelivr.net/gh/dxmari/antd-js-datepicker@main/picker.js.
 
 ---
 
