@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined AntD-like TimePicker</title>
+    <style>
+        .custom-timepicker {
+            display: flex;
+            align-items: center;
+            position: relative;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            padding: 4px 11px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 200px;
+        }
+        .custom-timepicker:hover {
+            border-color: #40a9ff;
+        }
+        .time-display {
+            width: 100%;
+            text-align: center;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+        }
+        .dropdown.open {
+            display: block;
+        }
+        .scroll-container {
+            display: flex;
+            justify-content: space-between;
+            overflow-x: hidden;
+            height: 150px;
+        }
+        .scroll-section {
+            flex: 1;
+            overflow-y: scroll;
+            text-align: center;
+        }
+        .scroll-section::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-section::-webkit-scrollbar-thumb {
+            background: #d9d9d9;
+            border-radius: 3px;
+        }
+        .scroll-section div {
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        .scroll-section div:hover {
+            background-color: #f5f5f5;
+        }
+        .scroll-section div.active {
+            background-color: #e6f7ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-timepicker" id="customTimePicker">
+        <div class="time-display" id="timeDisplay">12:00 AM</div>
+        <div class="dropdown" id="timeDropdown">
+            <div class="scroll-container">
+                <div class="scroll-section" id="hourSection"></div>
+                <div class="scroll-section" id="minuteSection"></div>
+                <div class="scroll-section" id="meridiemSection"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const timeDisplay = document.getElementById('timeDisplay');
+        const timeDropdown = document.getElementById('timeDropdown');
+        const hourSection = document.getElementById('hourSection');
+        const minuteSection = document.getElementById('minuteSection');
+        const meridiemSection = document.getElementById('meridiemSection');
+
+        // Generate options
+        const hours = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
+        const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
+        const meridiems = ['AM', 'PM'];
+
+        let selectedHour = '12';
+        let selectedMinute = '00';
+        let selectedMeridiem = 'AM';
+
+        // Populate sections
+        function populateSection(section, values, onSelect) {
+            values.forEach(value => {
+                const div = document.createElement('div');
+                div.textContent = value;
+                div.addEventListener('click', () => {
+                    section.querySelectorAll('div').forEach(el => el.classList.remove('active'));
+                    div.classList.add('active');
+                    onSelect(value);
+                    updateTimeDisplay();
+                });
+                section.appendChild(div);
+            });
+        }
+
+        // Update time display
+        function updateTimeDisplay() {
+            timeDisplay.textContent = `${selectedHour}:${selectedMinute} ${selectedMeridiem}`;
+        }
+
+        populateSection(hourSection, hours, value => (selectedHour = value));
+        populateSection(minuteSection, minutes, value => (selectedMinute = value));
+        populateSection(meridiemSection, meridiems, value => (selectedMeridiem = value));
+
+        // Add toggle functionality
+        timeDisplay.addEventListener('click', () => {
+            timeDropdown.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.custom-timepicker')) {
+                timeDropdown.classList.remove('open');
+            }
+        });
+
+        // Initialize with default values
+        hourSection.firstChild.classList.add('active');
+        minuteSection.firstChild.classList.add('active');
+        meridiemSection.firstChild.classList.add('active');
+    </script>
+</body>
+</html>
