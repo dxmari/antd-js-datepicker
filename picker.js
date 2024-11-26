@@ -128,14 +128,37 @@ AntdJSPicker.init = (inputname, configs = { placeholder: "Select time" }) => {
 
       // Add toggle functionality
       timeDisplay.addEventListener("click", () => {
+        document
+          .querySelectorAll(".dropdown-antd-js-picker")
+          .forEach((item) => {
+            if (!item.isEqualNode(timeDropdown)) {
+              item.classList.remove("open");
+            }
+          });
+
         timeDropdown.classList.toggle("open");
+        setTimeout(() =>{
+          scrollToActive(timeDropdown.children[0].children[0]);
+          scrollToActive(timeDropdown.children[0].children[1]);
+        }, 100)
       });
+
+      function scrollToActive(temp){
+        temp.childNodes.forEach(item => {
+          if(item.classList.contains('active')){
+            temp.scrollTo(0, item.offsetTop);
+          }
+        })
+      }
 
       // Close dropdown when clicking outside
       document.removeEventListener("click", () => {});
       document.addEventListener("click", (event) => {
         if (!event.target.closest(".antd-js-picker")) {
           timeDropdown.classList.remove("open");
+          document
+            .querySelectorAll(".dropdown-antd-js-picker")
+            .forEach((item) => item.classList.remove("open"));
         }
       });
 
@@ -178,6 +201,7 @@ AntdJSPicker.init = (inputname, configs = { placeholder: "Select time" }) => {
         }
         .time-display span{
           font-size: 13px;
+          color: #988c8c;
         }
         .dropdown-antd-js-picker {
             position: absolute;
