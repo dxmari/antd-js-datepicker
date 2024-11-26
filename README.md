@@ -17,7 +17,6 @@ A custom TimePicker replicating Ant Design's style and functionality. It feature
 ## Preview
 
 ### TimePicker Default Behavior:
-- Default time: `12:00 AM`
 - Dropdown includes:
   - **Hours**: `01` to `12`
   - **Minutes**: `00` to `59`
