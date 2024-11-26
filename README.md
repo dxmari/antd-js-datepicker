@@ -31,7 +31,7 @@ This component requires no dependencies from Ant Design.
 ### Steps to Use:
 1. **HTML**: Add the text input to your project.
 2. **CSS**: No need to add any styles.
-3. **JavaScript**: Just Include the script.
+3. **JavaScript**: Just Include the script https://cdn.jsdelivr.net/gh/dxmari/antd-js-datepicker@main/picker.js.
 
 ---
 
@@ -58,8 +58,8 @@ AntdJSPicker.init('.picker');
 ### 3. Set the time in the TimePicker
 
 ```javascript
-AntdJSPicker.setTime(<element>);
-AntdJSPicker.setTime('.picker');
+AntdJSPicker.setTime(<element>, <time>);
+AntdJSPicker.setTime('.picker', '05:00 AM');
 ```
 
 ## How It Works
