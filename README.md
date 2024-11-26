@@ -28,6 +28,13 @@ A custom TimePicker replicating Ant Design's style and functionality. It feature
 
 This component requires no dependencies from Ant Design.
 
+## Installation
+
+You can view the demo here https://dxmari.github.io/antd-js-datepicker/
+
+## Notes
+Currently, this plugin only supports the Timepicker feature. However, Datepicker functionality will be added in the future.
+
 ### Steps to Use:
 1. **HTML**: Add the text input to your project.
 2. **CSS**: No need to add any styles.
