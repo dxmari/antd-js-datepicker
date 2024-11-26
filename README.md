@@ -58,8 +58,8 @@ AntdJSPicker.init('.picker');
 ### 3. Set the time in the TimePicker
 
 ```javascript
-AntdJSPicker.setTime(<element>);
-AntdJSPicker.setTime('.picker');
+AntdJSPicker.setTime(<element>, <time>);
+AntdJSPicker.setTime('.picker', '05:00 AM');
 ```
 
 ## How It Works
